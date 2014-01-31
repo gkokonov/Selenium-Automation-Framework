@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.gk.magento.pageobjects.BasePage" project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/magento/pageobjects/BasePage.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="297" width="195" x="735" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.gk.magento.pageobjects.customer_ui.MagentoRegistrationPage" 
+    project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/magento/pageobjects/customer_ui/MagentoRegistrationPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="469" x="41" y="374"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.gk.magento.pageobjects.customer_ui.MagentoCustomerDashboardPage" 
+    project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/magento/pageobjects/customer_ui/MagentoCustomerDashboardPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="374" x="550" y="374"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.gk.magento.pageobjects.customer_ui.MagentoLoginPage" 
+    project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/magento/pageobjects/customer_ui/MagentoLoginPage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="378" x="964" y="374"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.gk.magento.pageobjects.customer_ui.MagentoHomePage" 
+    project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/magento/pageobjects/customer_ui/MagentoHomePage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="187" x="1382" y="374"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.gk.helpers.WebElementInteractions" project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/project/com/gk/helpers/WebElementInteractions.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="315" width="326" x="550" y="891"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="7" language="java" name="com.gk.webdriver.interfaces.IWebElementInteractions" 
+    project="Selenium-Automation-Framework" 
+    file="/Selenium-Automation-Framework/src/framework/com/gk/webdriver/interfaces/IWebElementInteractions.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="326" x="550" y="1246"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="10">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <association id="11">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="12" name="webElementInteractions"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="15" name="webElementInteractions"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="19">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="20" name="webElementInteractions"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,0 +1,1 @@
+How to write correct excel file for the tests - use template.xls.

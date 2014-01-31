@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="MagentoAutomationTests" parallel="methods" thread-count="1">
+    <parameter name="specifyBrowser" value="Firefox" /> <!-- Browsers: Firefox, IE, or Chrome -->
+    <parameter name="cleanDirs" value="false" />
+    <parameter name="killRunningBrowsers" value="false" />
+
+
+    <listeners>
+        <!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
+        <!-- <listener class-name="org.testng.reporters.SuiteHTMLReporter" /> -->
+        <!-- <listener class-name="org.testng.reporters.XMLReporter" /> -->
+        <!-- <listener class-name="org.testng.reporters.TestHTMLReporter" /> -->
+        
+        <!-- <listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
+        <!-- <listener class-name="org.testng.reporters.FailedReporter" /> -->
+    </listeners>
+
+    <test name="Magento" preserve-order="true">
+        <classes>
+            <class name="com.gk.magento.MagentoTests">
+<!--                 <methods>
+                    <include name="verifyServerIsWorking" />
+                    <include name="verifyServerIsWorking1" />
+                    <include name="verifyServerIsWorking2" />
+                </methods> -->
+            </class>
+        </classes>
+    </test>
+</suite> 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<project name="Web Automation Tests" basedir="." default="all">
+	<property file="build.properties" />
+	
+	<tstamp>
+		<format property="current.time" pattern="dd-MM-yyyy---hh-mm"/>
+	</tstamp>
+
+	<property name="lib.dir" value="${basedir}/libs" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="build.dir" value="${basedir}/target" />
+	<property name="config.dir" value="${basedir}/config" />
+	<property name="res.dir" value="${basedir}/resources" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="suites.dir" value="${basedir}/test-suites" />
+
+	<!-- test run propertiess-->
+	<property name="testreport.dir" value="${testoutput.dir}/TestsResult" />
+	<property name="screenshots.dir" value="${testoutput.dir}/Screenshots" />
+	<property name="video.dir" value="${testoutput.dir}/VideoRecording" />
+	<property name="log4j.dir" value="${testoutput.dir}/logs" />
+	<property name="rerun.testreport.dir" value="${testreport.dir}/rerun" />
+	
+	<path id="build.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<path id="runtime.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+		<pathelement location="${config.dir}" />
+		<pathelement location="${res.dir}" />
+		<pathelement location="${suites.dir}" />
+		<pathelement location="${classes.dir}" />
+	</path>
+
+	<target name="clean" description="Delete the build directory.">
+		<!-- Delete directories trees. -->
+		<delete dir="${build.dir}" />
+		<delete dir="${classes.dir}" />
+		
+		<delete dir="${testreport.dir}" />
+		<delete dir="${screenshots.dir}" />
+		<delete dir="${video.dir}" />
+		<delete dir="${log4j.dir}" />
+		<delete dir="${rerun.testreport.dir}" />
+		<sleep seconds="5"/>
+	</target>
+
+	<target name="init" depends="clean" description="Create build directories.">
+		<!--Create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
+		
+		<mkdir dir="${testreport.dir}" />
+		<mkdir dir="${screenshots.dir}" />
+		<mkdir dir="${video.dir}" />
+		<mkdir dir="${rerun.testreport.dir}" />
+		<sleep seconds="5"/>
+	</target>
+
+	<target name="compile" depends="init" description="Compile tests.">
+		<!-- Compile the java code from ${src} into ${classes.dir} -->
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.classpath" 
+			debug="true" includeantruntime="false" encoding="UTF-8"/>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}" includes="**/*.xml,**/*.properties" />
+		</copy>
+		<sleep seconds="2"/>
+	</target>
+
+	<target name="run-test" depends="compile" description="Run test suites.">
+		<!-- Run a testng suite-->
+		<taskdef resource="testngtasks" classpath="${testng.path}" />
+
+		<testng classpathref="runtime.classpath"
+				outputDir="${testreport.dir}" 
+				haltOnFailure="false"
+				useDefaultListeners="false"
+				listeners="org.uncommons.reportng.HTMLReporter, org.testng.reporters.FailedReporter"
+				verbose="3">
+	    <jvmarg value="-Dfile.encoding=UTF-8"/>
+		<jvmarg value="-Xms128m"/>
+		<jvmarg value="-Xmx256m"/>
+		<sysproperty key="org.uncommons.reportng.title" value="Web Automation Tests Report"/>
+		<xmlfileset dir="${suites.dir}" includes="${test.suites}"/>
+		</testng>
+		
+		<sleep seconds="10"/>
+		<available file="${testreport.dir}/testng-failed.xml"  property="file.found"/>
+		<antcall target="rerun-failed-tests"/>
+		<sleep seconds="10"/>
+	</target>
+	
+	<target name="rerun-failed-tests" description="Rerun failed test scenarios." if="file.found">
+		<taskdef resource="testngtasks" classpath="${testng.path}" />
+
+				<testng classpathref="runtime.classpath"
+						outputDir="${rerun.testreport.dir}" 
+						haltOnFailure="false"
+						useDefaultListeners="false"
+						listeners="org.uncommons.reportng.HTMLReporter"
+						verbose="3">
+			    <jvmarg value="-Dfile.encoding=UTF-8"/>
+				<jvmarg value="-Xms128m"/>
+				<jvmarg value="-Xmx256m"/>
+				<sysproperty key="org.uncommons.reportng.title" value="Web Automation Tests Report - Rerun Failed Tests"/>
+				<xmlfileset dir="${testreport.dir}" includes="testng-failed.xml"/>
+				</testng>
+	</target>
+	
+	<target name="copy-results">
+		<!-- Copy test results to a specific dir. -->
+		<mkdir dir="C:/RESULTS/${current.time}"/>
+		<copy todir="C:/RESULTS/${current.time}">
+		    <fileset dir="${testoutput.dir}"/>
+		</copy>
+	</target>
+
+	<target name="all" depends="run-test" description="Executes all targets." />
+
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="All Tests (BulkImport_FF)" parallel="false">
+ <parameter name="specifyBrowser" value="Firefox"/> <!-- Browsers: Firefox, IE, or Chrome -->
+ <test name="Merchant Test Cases" >
+   <groups>
+    <run>
+      <exclude name="Admin"  />
+    </run>
+  </groups>
+   	
+  <classes>
+    <class name="com.s2.vmall.tests.BulkImport"/>
+  </classes>
+ </test>
+ 
+ <test name="Admin Test Cases" >
+   <groups>
+    <run>
+      <include name="Admin"  />
+    </run>
+  </groups>
+   	
+  <classes>
+	<class name="com.s2.vmall.tests.BulkImport"/>
+  </classes>
+  
+ </test> 
+</suite>

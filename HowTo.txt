@@ -1,0 +1,19 @@
+# How to run test suite
+$ ant run-test - executes all-tests suite
+$ ant run-test -Dtest.suites=<suite_name> - executes <suite_name> suite
+
+# ReportNG Listeners
+org.uncommons.reportng.HTMLReporter
+org.uncommons.reportng.JUnitXMLReporter
+
+# TestNG Listeners
+org.testng.reporters.XMLReporter
+org.testng.reporters.JUnitXMLReporter
+org.testng.reporters.SuiteHTMLReporter
+org.testng.reporters.TestHTMLReporter
+
+# Hints
+- Protected mode on or off for all (IE)
+
+# Supported browsers
+Firefox 25.0.1; IE 11; Opera 12.16; Safari 5.1.7, Chrome 31.0.1670
